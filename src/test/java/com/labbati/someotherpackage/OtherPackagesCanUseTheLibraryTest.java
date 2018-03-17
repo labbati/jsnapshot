@@ -9,7 +9,7 @@ import java.util.List;
  * This test is not to test any functional aspect of the library. It is just to test that we are not messing
  * up with public vs package-scoped classes.
  */
-class OtherPackagesCanUseTheLibraryTest {
+public class OtherPackagesCanUseTheLibraryTest {
 
     private static class Pojo implements SnapshotCapable {
 
