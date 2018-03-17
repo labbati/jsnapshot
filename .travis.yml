@@ -5,10 +5,14 @@ jdk:
   
 sudo: false
 
+os:
+  - linux
+
 cache:
   directories:
-    - $HOME/.m2
+    - $HOME/.gradle
 
 install: true
 
-script: "./gradlew clean test"
+script:
+  - ./gradlew test
