@@ -1,6 +1,6 @@
 ## jsnapshot
 
-`jsnapshot` is a super simple set of utilities to take and handle snapshots of your POJOs.
+`jsnapshot` is a super simple set of utilities to take and handle snapshots of your POJOs. It requires Java 8+.
 
 A snapshot is just a bunch of values wrapped in an instance of `Snapshot`. The simplest way to start working with `jsnapshot` is to add the interface `SnapshotCapable` to a POJO.
 
@@ -16,16 +16,19 @@ public class Person implements SnapshotCapable {
     public Snapshot takeSnapshot() {
         return new Snapshot(
             this::getId,
-            new SnapshotValue("property 1", 1),
-            new SnapshotValue("property 2", nullSafe(() -> getNested().getOther().getName(), "defaultValue"))
+            new SnapshotValue("name or something else", 1),
+            new SnapshotValue("some other label", nullSafe(() -> getNested().getOther().getName(), "defaultValue"))
         );
     }
 }
 ```
 
-Then you can just do `Snapshot snapshot = person.takeSnapshot()`. You basically decide which fields get included into the snapshot and with which value. Nothing magic here, just old plain reliable getters.
+Then you can just do `Snapshot snapshot = person.takeSnapshot()`. You basically decide which fields get included into the snapshot and with which value. Nothing's magic here, just old plain reliable getters.
 
-If you take snapshot of a POJO in two different instant of time, let's say
+As you may have noticed, for `some other label` we used `SnapshotCapable`'s method `nullSafe()`. This method is useful when you need to access nested objects to extract the value. If one object down the path is `null`, you would get a `NullPointerException`. This method makes sure that such exception is trapped.
+The first argument to the method is java 8 lambda that just returns the value. The optional second argument is the fallback value that should be returned if `NullPointerException` is thrown. If not provided, than the fallback value is `null`.
+
+If you take snapshots of a POJO in two different instant of time, let's say
 
 ```java
 Snapshot before = person.takeSnapshot();
