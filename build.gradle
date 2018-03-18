@@ -59,11 +59,6 @@ release {
     }
 }
 
-// After release, we want to publish to jcenter
-release << {
-    bintray.execute()
-}
-
 task createPom << {
     pom {
         project {
@@ -90,6 +85,11 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 artifacts {
     archives sourcesJar
     archives javadocJar
+}
+
+// After release, we want to publish to jcenter
+tasks.release << {
+    bintray.execute()
 }
 
 repositories {
