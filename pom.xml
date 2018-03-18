@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.labbati</groupId>
   <artifactId>jsnapshot</artifactId>
-  <version>0.2.13</version>
+  <version>0.2.14</version>
   <inceptionYear>2018</inceptionYear>
   <licenses>
     <license>

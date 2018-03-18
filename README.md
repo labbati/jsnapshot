@@ -25,7 +25,7 @@ In your `pom.xml`:
     <dependency>
       <groupId>com.labbati</groupId>
       <artifactId>jsnapshot</artifactId>
-      <version>0.2.13</version>
+      <version>0.2.14</version>
       <type>pom</type>
     </dependency>
     ...
@@ -43,7 +43,7 @@ repositories {
 
 dependencies {
     ...
-    compile 'com.labbati:jsnapshot:0.2.13'
+    compile 'com.labbati:jsnapshot:0.2.14'
 }
 ```
 
