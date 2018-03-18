@@ -18,9 +18,11 @@ apply plugin: 'net.researchgate.release'
 sourceCompatibility = 1.8
 
 bintray {
-    // From gradle.properties
-    user = bintray_user
-    key = bintray_key
+    if (project.hasProperty("bintray_user")) {
+        // From gradle.properties
+        user = bintray_user
+        key = bintray_key
+    }
     configurations = ['archives']
     dryRun = false
     publish = true
