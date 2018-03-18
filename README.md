@@ -2,6 +2,53 @@
 
 `jsnapshot` is a super simple set of utilities to take and handle snapshots of your POJOs. It requires Java 8+.
 
+### Dependency resolution
+
+`jsnapshot` is distribuited through `jcenter`.
+
+#### Maven
+In your `pom.xml`:
+
+```xml
+...
+<repositories>
+    ...
+    <repository>
+      <id>jcenter</id>
+      <url>https://jcenter.bintray.com/</url>
+    </repository>
+    ...
+</repositories>
+
+<dependencies>
+    ...
+    <dependency>
+      <groupId>com.labbati</groupId>
+      <artifactId>jsnapshot</artifactId>
+      <version>0.2.11</version>
+      <type>pom</type>
+    </dependency>
+    ...
+</dependencies>
+```
+
+#### Gradle
+In your `build.gradle`:
+
+```groovy
+repositories {
+    ...
+    jcenter()
+}
+
+dependencies {
+    ...
+    compile 'com.labbati:jsnapshot:0.2.11'
+}
+```
+
+### Usage
+
 A snapshot is just a bunch of values wrapped in an instance of `Snapshot`. The simplest way to start working with `jsnapshot` is to add the interface `SnapshotCapable` to a POJO.
 
 ```java
