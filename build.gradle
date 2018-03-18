@@ -46,7 +46,7 @@ release {
     failOnUnversionedFiles = true
     failOnUpdateNeeded = true
     revertOnFail = true
-    preCommitText = 'Version: '
+    preCommitText = ''
     preTagCommitMessage = 'New version of jsnapshot released: '
     tagCommitMessage = 'New version of jsnapshot released: '
     newVersionCommitMessage = 'New version of jsnapshot released: '
