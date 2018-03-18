@@ -1,5 +1,5 @@
 group 'com.labbati'
-version '0.2.1'
+version '0.2.2'
 
 buildscript {
     repositories {
@@ -7,12 +7,14 @@ buildscript {
     }
     dependencies {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'net.researchgate:gradle-release:2.6.0'
     }
 }
 
 apply plugin: 'java'
-apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'net.researchgate.release'
 
 sourceCompatibility = 1.8
 
@@ -31,20 +33,45 @@ bintray {
         vcsUrl = 'https://github.com/labbati/jsnapshot.git'
         githubRepo = 'labbati/jsnapshot'
         version {
-            name = version
-            desc = 'jsnapshot ' + version + ' final'
+            name = version.name
+            desc = 'jsnapshot ' + version.name + ' final'
             released  = new Date()
         }
+    }
+}
+
+release {
+    failOnCommitNeeded = true
+    failOnPublishNeeded = true
+    failOnSnapshotDependencies = true
+    failOnUnversionedFiles = true
+    failOnUpdateNeeded = true
+    revertOnFail = true
+    preCommitText = ''
+    preTagCommitMessage = '[Gradle Release Plugin] - pre tag commit: '
+    tagCommitMessage = '[Gradle Release Plugin] - creating tag: '
+    newVersionCommitMessage = '[Gradle Release Plugin] - new version commit: '
+    tagTemplate = '${version}'
+    buildTasks = ['build']
+
+    git {
+        requireBranch = 'master'
+        pushToRemote = 'origin'
+        pushToBranchPrefix = ''
+        commitVersionFileOnly = false
+        signTag = false
+    }
+
+    svn {
+        username = null
+        password = null
+        pinExternals = false   // allows to pin the externals when tagging, requires subversion client >= 1.9.0
     }
 }
 
 task createPom << {
     pom {
         project {
-            groupId group
-            artifactId 'jsnapshot'
-            version version
-
             inceptionYear '2018'
             licenses {
                 license {
