@@ -49,7 +49,7 @@ release {
     preCommitText = ''
     preTagCommitMessage = 'New version of jsnapshot released: '
     tagCommitMessage = 'New version of jsnapshot released: '
-    newVersionCommitMessage = 'New version of jsnapshot released: '
+    newVersionCommitMessage = 'Preparing for version: '
     tagTemplate = '${version}'
     buildTasks = ['build', 'createPom', 'bintrayUpload']
 
