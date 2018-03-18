@@ -51,7 +51,7 @@ release {
     tagCommitMessage = 'New version of jsnapshot released: '
     newVersionCommitMessage = 'New version of jsnapshot released: '
     tagTemplate = '${version}'
-    buildTasks = ['build', 'createPom']
+    buildTasks = ['build', 'createPom', 'bintray']
 
     git {
         requireBranch = 'master'
@@ -85,11 +85,6 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 artifacts {
     archives sourcesJar
     archives javadocJar
-}
-
-// After release, we want to publish to jcenter
-tasks.release << {
-    tasks.bintray.execute()
 }
 
 repositories {
