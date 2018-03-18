@@ -46,12 +46,12 @@ release {
     failOnUnversionedFiles = true
     failOnUpdateNeeded = true
     revertOnFail = true
-    preCommitText = ''
-    preTagCommitMessage = '[Gradle Release Plugin] - pre tag commit: '
-    tagCommitMessage = '[Gradle Release Plugin] - creating tag: '
-    newVersionCommitMessage = '[Gradle Release Plugin] - new version commit: '
+    preCommitText = 'Version: '
+    preTagCommitMessage = 'New version of jsnapshot released: '
+    tagCommitMessage = 'New version of jsnapshot released: '
+    newVersionCommitMessage = 'New version of jsnapshot released: '
     tagTemplate = '${version}'
-    buildTasks = ['build']
+    buildTasks = ['build', 'createPom']
 
     git {
         requireBranch = 'master'
