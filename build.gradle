@@ -1,5 +1,4 @@
 group 'com.labbati'
-version '0.2.4-SNAPSHOT'
 
 buildscript {
     repositories {
