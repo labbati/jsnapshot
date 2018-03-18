@@ -51,7 +51,7 @@ release {
     tagCommitMessage = 'New version of jsnapshot released: '
     newVersionCommitMessage = 'Preparing for version: '
     tagTemplate = '${version}'
-    buildTasks = ['build', 'createPom', 'bintrayUpload']
+    buildTasks = ['build', 'createPom', 'replaceVersionInREADME', 'bintrayUpload']
 
     git {
         requireBranch = 'master'
@@ -70,6 +70,15 @@ task createPom << {
             }
         }
     }.writeTo("pom.xml")
+}
+
+task replaceVersionInREADME << {
+    ant.replaceregexp(match:'<version>([0-9\\.]+)</version>', replace:"<version>${version}</version>", flags:'g', byline:true) {
+        fileset(dir: '.', includes: 'README.md')
+    }
+    ant.replaceregexp(match:'com\\.labbati\\:jsnapshot\\:([0-9\\.]+)', replace:"com.labbati:jsnapshot:${version}", flags:'g', byline:true) {
+        fileset(dir: '.', includes: 'README.md')
+    }
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {
