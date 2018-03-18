@@ -51,7 +51,7 @@ release {
     tagCommitMessage = 'New version of jsnapshot released: '
     newVersionCommitMessage = 'New version of jsnapshot released: '
     tagTemplate = '${version}'
-    buildTasks = ['build', 'createPom', 'bintray']
+    buildTasks = ['build', 'createPom', 'bintrayUpload']
 
     git {
         requireBranch = 'master'
