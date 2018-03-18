@@ -89,7 +89,7 @@ artifacts {
 
 // After release, we want to publish to jcenter
 tasks.release << {
-    bintray.execute()
+    tasks.bintray.execute()
 }
 
 repositories {
