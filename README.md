@@ -1,4 +1,4 @@
-## jsnapshot
+## jsnapshot [![Build Status](https://travis-ci.org/labbati/jsnapshot.svg?branch=master)](https://travis-ci.org/labbati/jsnapshot)
 
 `jsnapshot` is a super simple set of utilities to take and handle snapshots of your POJOs. It requires Java 8+.
 
